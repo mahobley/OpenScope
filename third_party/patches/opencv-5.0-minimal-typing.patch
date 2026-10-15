@@ -1,0 +1,29 @@
+--- a/setup.py
++++ b/setup.py
+@@ -127,7 +127,7 @@
+             r"python/cv2/.*config.*.py"
+         ]
+         +
+-        [ r"python/cv2/py.typed" ] if sys.version_info >= (3, 6) else []
++        ([ r"python/cv2/py.typed" ] if sys.version_info >= (3, 6) and os.environ.get("OPENCV_PYTHON_SKIP_TYPING_STUBS") != "1" else [])
+         ,
+         "cv2.mat_wrapper": [
+             "python/cv2" + r"/mat_wrapper/.*\.py"
+@@ -140,7 +140,7 @@
+         ],
+     }
+ 
+-    if sys.version_info >= (3, 6):
++    if sys.version_info >= (3, 6) and os.environ.get("OPENCV_PYTHON_SKIP_TYPING_STUBS") != "1":
+         rearrange_cmake_output_data["cv2.typing"] = ["python/cv2" + r"/typing/.*\.py"]
+ 
+     # Files in sourcetree outside package dir that should be copied to package.
+@@ -410,7 +410,7 @@
+         with open(config_py, 'w') as opencv_init_config:
+             opencv_init_config.write(custom_init_data)
+ 
+-        if sys.version_info >= (3, 6):
++        if sys.version_info >= (3, 6) and os.environ.get("OPENCV_PYTHON_SKIP_TYPING_STUBS") != "1":
+             for p in install_relpaths:
+                 if p.endswith(".pyi"):
+                     target_rel_path = os.path.relpath(p, "python/cv2")

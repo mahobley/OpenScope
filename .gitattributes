@@ -1,0 +1,3 @@
+# Upstream notice hashes are over their exact original bytes on every OS.
+third_party/licenses/** -text
+third_party/notices/** -text

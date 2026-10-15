@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "purpose": "Source archive inputs for the observed Linux build; correspondence review is recorded separately for each final release.",
+  "sources": [
+    {
+      "name": "zeroconf",
+      "version": "0.149.17",
+      "license": "LGPL-2.1-or-later",
+      "url": "https://files.pythonhosted.org/packages/7b/95/1be51e0a98f629bf8fc8dd8b038c0323f3a090969cb007cdcf436bd844d9/zeroconf-0.149.17.tar.gz",
+      "sha256": "f10e58071bc5e749176b8dc8d7e7ed4d2e6b507dde20fd8169b760cf4f7f4c5a",
+      "filename": "zeroconf-0.149.17.tar.gz",
+      "correspondence": "Exact pinned Python source distribution; retain any wheel recipe or patches.",
+      "metadata_url": "https://pypi.org/pypi/zeroconf/0.149.17/json"
+    },
+    {
+      "name": "FFmpeg",
+      "version": "8.1.1",
+      "license": "LGPL-2.1-or-later",
+      "url": "https://ffmpeg.org/releases/ffmpeg-8.1.1.tar.xz",
+      "filename": "ffmpeg-8.1.1.tar.xz",
+      "correspondence": "Version reported by the Linux OpenCV wheel; confirm upstream wheel patches and include its build recipe before release.",
+      "sha256": "b6863adde98898f42602017462871b5f6333e65aec803fdd7a6308639c52edf3"
+    },
+    {
+      "name": "Qt base",
+      "version": "5.15.19",
+      "license": "LGPL-3.0",
+      "url": "https://download.qt.io/archive/qt/5.15/5.15.19/submodules/qtbase-everywhere-opensource-src-5.15.19.tar.xz",
+      "filename": "qtbase-everywhere-opensource-src-5.15.19.tar.xz",
+      "correspondence": "Version reported by the Linux OpenCV wheel; confirm module set, patches, and build recipe before release.",
+      "sha256": "51e91c73abacab81e64efd01bf95794e79c0e605ad80947a024769f0dd620a32"
+    },
+    {
+      "name": "numpy",
+      "version": "2.0.2",
+      "license": "BSD-3-Clause and native component terms",
+      "url": "https://files.pythonhosted.org/packages/a9/75/10dd1f8116a8b796cb2c737b674e02d02e80454bda953fa7e65d8c12b016/numpy-2.0.2.tar.gz",
+      "sha256": "883c987dee1880e2a864ab0dc9892292582510604156762362d9326444636e78",
+      "filename": "numpy-2.0.2.tar.gz",
+      "metadata_url": "https://pypi.org/pypi/numpy/2.0.2/json",
+      "correspondence": "Exact pinned Python source distribution; native dependency sources, wheel recipes and any patches still need per-build review."
+    },
+    {
+      "name": "opencv-python",
+      "version": "5.0.0.93",
+      "license": "MIT / Apache-2.0 and native component terms",
+      "url": "https://files.pythonhosted.org/packages/79/4c/a438d23e09ce2033c09f7b784ad2fbdb0adf529e434101ed28f142226f98/opencv_python-5.0.0.93.tar.gz",
+      "sha256": "66aac3e5b5faa48d4025816592f3af19e4bfc2c68dec067bae2dbb4ca10aa9e2",
+      "filename": "opencv_python-5.0.0.93.tar.gz",
+      "metadata_url": "https://pypi.org/pypi/opencv-python/5.0.0.93/json",
+      "correspondence": "Exact pinned Python source distribution; native dependency sources, wheel recipes and any patches still need per-build review."
+    },
+    {
+      "name": "pillow",
+      "version": "12.3.0",
+      "license": "MIT-CMU and native component terms",
+      "url": "https://files.pythonhosted.org/packages/1c/3d/bb7fca845737cf9d7dbde16ed1843984665ff2e0a518f5db43e77ec540b9/pillow-12.3.0.tar.gz",
+      "sha256": "3b8182a766685eaa002637e28b4ec8d6b18819a0c71f579bf0dbaa5830297cce",
+      "filename": "pillow-12.3.0.tar.gz",
+      "metadata_url": "https://pypi.org/pypi/pillow/12.3.0/json",
+      "correspondence": "Exact pinned Python source distribution; native dependency sources, wheel recipes and any patches still need per-build review."
+    },
+    {
+      "name": "dpkt",
+      "version": "1.9.8",
+      "license": "BSD-3-Clause",
+      "url": "https://files.pythonhosted.org/packages/c9/7d/52f17a794db52a66e46ebb0c7549bf2f035ed61d5a920ba4aaa127dd038e/dpkt-1.9.8.tar.gz",
+      "sha256": "43f8686e455da5052835fd1eda2689d51de3670aac9799b1b00cfd203927ee45",
+      "filename": "dpkt-1.9.8.tar.gz",
+      "metadata_url": "https://pypi.org/pypi/dpkt/1.9.8/json",
+      "correspondence": "Exact pinned Python source distribution; native dependency sources, wheel recipes and any patches still need per-build review."
+    },
+    {
+      "name": "pyserial",
+      "version": "3.5",
+      "license": "BSD-3-Clause",
+      "url": "https://files.pythonhosted.org/packages/1e/7d/ae3f0a63f41e4d2f6cb66a5b57197850f919f59e558159a4dd3a818f5082/pyserial-3.5.tar.gz",
+      "sha256": "3c77e014170dfffbd816e6ffc205e9842efb10be9f58ec16d3e8675b4925cddb",
+      "filename": "pyserial-3.5.tar.gz",
+      "metadata_url": "https://pypi.org/pypi/pyserial/3.5/json",
+      "correspondence": "Exact pinned Python source distribution; native dependency sources, wheel recipes and any patches still need per-build review."
+    },
+    {
+      "name": "pyinstaller",
+      "version": "6.22.2",
+      "license": "GPL-2.0-or-later WITH Bootloader-exception",
+      "url": "https://files.pythonhosted.org/packages/cc/2b/836d9def811c02522e0921d8b8cdf0c16b0545a216e97e71041758057859/pyinstaller-6.22.2.tar.gz",
+      "sha256": "89b65a3ad07d9dd5832253e37bc45f31872d10d7f9d5c9fd0fdd6088a83829dd",
+      "filename": "pyinstaller-6.22.2.tar.gz",
+      "metadata_url": "https://pypi.org/pypi/pyinstaller/6.22.2/json",
+      "correspondence": "Exact pinned Python source distribution; native dependency sources, wheel recipes and any patches still need per-build review."
+    }
+  ]
+}

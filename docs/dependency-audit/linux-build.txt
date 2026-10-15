@@ -1,0 +1,16 @@
+  • electron-builder  version=26.16.1 os=7.0.0-38-generic
+  • loaded configuration  file=/tmp/openscope-dependency-build/electron-builder.json
+  • executing @electron/rebuild  electronVersion=44.3.0 arch=x64 buildFromSource=false workspaceRoot=/home/mahobley/Code/garmin_release/desktop projectDir=./ appDir=./
+  • installing native dependencies  arch=x64
+  • completed installing native dependencies
+  • packaging       platform=linux arch=x64 electron=44.3.0 appOutDir=/tmp/openscope-dependency-build/desktop/linux-unpacked
+  • downloaded      label=electron progress=100%
+  • downloaded electron zip extracted successfully  output=/tmp/openscope-dependency-build/desktop/linux-unpacked
+  • searching for node modules  pm=npm searchDir=/home/mahobley/Code/garmin_release/desktop
+  • no node modules found in collection, trying next search directory  pm=npm searchDir=/home/mahobley/Code/garmin_release/desktop
+  • searching for node modules  pm=traversal searchDir=/home/mahobley/Code/garmin_release/desktop
+  • using manual traversal of node_modules to build dependency tree
+  • no node modules found in collection, trying next search directory  pm=traversal searchDir=/home/mahobley/Code/garmin_release/desktop
+  • no node modules returned while searching directories  searchDirectories=[""]
+  • building        target=AppImage arch=x64 file=/tmp/openscope-dependency-build/desktop/OpenScope-0.1.0.AppImage
+  • building embedded block map  file=/tmp/openscope-dependency-build/desktop/OpenScope-0.1.0.AppImage

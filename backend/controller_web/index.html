@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OpenScope</title>
+  <link rel="stylesheet" href="/app.css">
+</head>
+<body>
+  <main>
+    <header class="app-header">
+      <div>
+        <span class="eyebrow">GLS10 &amp; LVS32 Transducer</span>
+        <h1>OpenScope</h1>
+        <small id="build-info"></small>
+        <p class="header-copy">Configure, monitor, and record a sonar session.</p>
+      </div>
+      <div class="header-actions">
+        <button id="export-diagnostics" type="button" hidden>Export diagnostics</button>
+        <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to light mode">Light mode</button>
+        <div id="controller-state" class="pill">Loading…</div>
+      </div>
+    </header>
+
+    <section id="session">
+      <div class="session-bar">
+        <div>
+          <span class="status-dot" aria-hidden="true"></span>
+          <strong id="session-message">Starting OpenScope…</strong>
+          <small id="session-error" role="alert" hidden></small>
+          <small id="range-failure" role="alert" hidden>Changing the range has failed. Please power cycle the GLS10 and restart OpenScope.</small>
+          <div id="adapter-suggestion" role="alert" hidden>
+            <span id="adapter-suggestion-message"></span>
+            <button id="choose-another-adapter" type="button">Choose another adapter</button>
+          </div>
+        </div>
+        <button id="stop-session" class="danger">Stop session</button>
+      </div>
+      <div class="viewer-shell">
+        <div id="viewer-placeholder">
+          <span id="viewer-placeholder-message">Starting OpenScope…</span>
+          <button id="restart-auto-discovery" class="accent" type="button" hidden>Restart with auto-detect &amp; repair IP</button>
+        </div>
+        <iframe id="viewer" title="Sonar viewer" scrolling="no" hidden
+                allow="fullscreen" allowfullscreen></iframe>
+      </div>
+    </section>
+
+    <details class="diagnostics-drawer">
+      <summary>
+        <span><span class="eyebrow">System</span> Connection diagnostics</span>
+        <span class="summary-hint">Adapter, stream health, and action feedback</span>
+      </summary>
+    <section id="diagnostics" class="panel diagnostics">
+      <div>
+        <button id="restore-network" type="button">Restore network settings</button>
+        <small>Stop the session first. Reconnect the dedicated sonar adapter to restore changes left by an interrupted session.</small>
+      </div>
+      <div>
+        <span>Adapter</span>
+        <strong id="diagnostic-interface">Not selected</strong>
+      </div>
+      <div>
+        <span>Physical link</span>
+        <strong id="diagnostic-link">Unknown</strong>
+      </div>
+      <div>
+        <span>Sonar packets</span>
+        <strong id="diagnostic-packets">Waiting</strong>
+      </div>
+      <div class="diagnostic-summary">
+        <span>Stream health</span>
+        <strong id="diagnostic-stream">Waiting for packet diagnostics</strong>
+        <small id="diagnostic-guidance"></small>
+      </div>
+      <div class="action-feedback">
+        <span>Action feedback</span>
+        <strong id="diagnostic-action">No actions yet</strong>
+      </div>
+    </section>
+    </details>
+
+    <details id="logs-panel">
+      <summary>Session log <span class="summary-hint">Detailed startup and error output</span></summary>
+      <pre id="logs">No session output yet.</pre>
+    </details>
+
+    <details id="advanced-settings">
+      <summary>
+        <span><span class="eyebrow">Advanced</span> Connection and logging</span>
+        <span class="summary-hint">Interface override, adapter repair, and debug output</span>
+      </summary>
+      <div class="advanced-content">
+        <div class="panel-heading">
+          <p>The automatic settings usually work. Applying changes restarts the OpenScope session.</p>
+          <button id="refresh-interfaces" type="button">Refresh interfaces</button>
+        </div>
+        <form id="start-form">
+          <label class="wide">Sonar Ethernet interface
+            <select id="interface">
+              <option value="">Auto-detect</option>
+            </select>
+          </label>
+          <fieldset class="wide">
+            <legend>Startup behavior</legend>
+            <label>Startup range
+              <select id="startup-range">
+                <option value="none">Do not request a range</option>
+                <option value="min">Minimum</option>
+                <option value="7">7 ft</option>
+                <option value="9">9 ft</option>
+                <option value="10">10 ft</option>
+                <option value="15" selected>15 ft</option>
+                <option value="20">20 ft</option>
+                <option value="25">25 ft</option>
+                <option value="30">30 ft</option>
+                <option value="35">35 ft</option>
+                <option value="40">40 ft</option>
+                <option value="45">45 ft</option>
+                <option value="50">50 ft</option>
+                <option value="55">55 ft</option>
+                <option value="60">60 ft</option>
+                <option value="65">65 ft</option>
+                <option value="70">70 ft</option>
+                <option value="75">75 ft</option>
+                <option value="80">80 ft</option>
+                <option value="90">90 ft</option>
+                <option value="100">100 ft</option>
+                <option value="110">110 ft</option>
+                <option value="120">120 ft</option>
+                <option value="135">135 ft</option>
+                <option value="150">150 ft</option>
+                <option value="175">175 ft</option>
+                <option value="200">200 ft</option>
+              </select>
+            </label>
+            <label><input id="auto-configure-interface" type="checkbox" checked> Automatically repair adapter IP addresses</label>
+            <label><input id="debug" type="checkbox"> Debug logging</label>
+          </fieldset>
+          <button id="apply-settings" class="accent wide" type="submit">Apply and restart OpenScope</button>
+          <button id="launch-full-discovery" class="wide" type="button">Launch with full discovery (auto-detect &amp; repair IP)</button>
+        </form>
+        <div id="form-error" role="alert"></div>
+      </div>
+    </details>
+  </main>
+  <script src="/app.js"></script>
+</body>
+</html>

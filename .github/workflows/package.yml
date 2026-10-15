@@ -1,0 +1,76 @@
+name: Build release review artifacts
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  package:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: macos-15
+            target: mac
+            architecture: arm64
+          - os: windows-2022
+            target: win
+            architecture: x64
+          - os: ubuntu-22.04
+            target: linux
+            architecture: x64
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          architecture: ${{ matrix.architecture }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          architecture: ${{ matrix.architecture }}
+      - if: runner.os == 'Linux'
+        run: sudo apt-get update && sudo apt-get install -y libpcap0.8
+      - if: runner.os != 'macOS'
+        uses: conda-incubator/setup-miniconda@v4
+        with:
+          miniforge-version: latest
+          activate-environment: ""
+          auto-activate: false
+      - if: runner.os == 'macOS'
+        run: python scripts/prepare_macos_runtime.py
+      - if: runner.os == 'Linux'
+        run: python scripts/prepare_linux_runtime.py --conda "$CONDA/bin/conda"
+      - if: runner.os == 'Windows'
+        run: python scripts/prepare_windows_runtime.py --conda "$env:CONDA\Scripts\conda.exe"
+      - run: npm ci
+        working-directory: desktop
+      - run: npm test
+        working-directory: desktop
+      - run: npm run build:${{ matrix.target }}
+        working-directory: desktop
+        env:
+          CSC_IDENTITY_AUTO_DISCOVERY: 'false'
+      - if: runner.os == 'macOS'
+        run: python scripts/package_macos_sources.py
+      - if: runner.os == 'Windows'
+        run: |
+          & "$env:CONDA\Scripts\conda.exe" list --prefix build/native-conda --explicit | Set-Content -Encoding ascii build/conda-explicit.txt
+          build/native-conda/python.exe scripts/package_windows_sources.py
+          node desktop/scripts/smoke-backend.js dist/win-unpacked/resources
+      - uses: actions/upload-artifact@v4
+        with:
+          name: OpenScope-${{ matrix.target }}-${{ matrix.architecture }}
+          if-no-files-found: error
+          path: |
+            dist/*.dmg
+            dist/*.exe
+            dist/*.AppImage
+            dist/*.deb
+            dist/*-sources.zip
+            dist/*-notices.zip
+            build/THIRD_PARTY_LICENSES/**
+            build/build-manifest.json
+            THIRD_PARTY_NOTICES.md
+            docs/LICENSING.md
+            AUTHORS.md

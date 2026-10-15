@@ -1,0 +1,16 @@
+name: emulator
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - defaults::python=3.12
+  - defaults::numpy
+  - defaults::opencv=4.13
+  # Keep OpenCV and protobuf on the same channel to avoid a macOS C++ ABI mismatch.
+  - defaults::libprotobuf=6.33.5
+  - defaults::pillow
+  - defaults::pytest
+  - conda-forge::dpkt=1.9.8
+  - conda-forge::libpcap
+  - conda-forge::pyserial
+  - conda-forge::zeroconf

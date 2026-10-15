@@ -1,0 +1,15 @@
+# Initial solver inputs. Retain conda list --explicit output and the package
+# cache for the exact release. finish_linux_runtime.py replaces FFmpeg with 8.1.3.
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12.15
+  - py-opencv=5.0.0
+  - numpy=2.0.2
+  - pillow=12.3.0
+  - ffmpeg=8.1.2=lgpl*
+  - libpng>=1.6.59
+  - libtiff>=4.7.2
+  - openssl>=3.6.5
+  - nasm
+  - ruamel.yaml

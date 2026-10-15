@@ -1,0 +1,308 @@
+{
+  "date": "2026-10-14",
+  "tool": "pip-audit 2.10.1",
+  "requirement": "backend/packaging/requirements-build.txt",
+  "raw_finding_count": 45,
+  "note": "Duplicate IDs merged; descriptions omitted. Runtime plus resolved build dependencies on Linux Python 3.12.",
+  "dependencies": [
+    {
+      "name": "numpy",
+      "version": "2.0.2",
+      "vulnerabilities": []
+    },
+    {
+      "name": "opencv-python",
+      "version": "5.0.0.93",
+      "vulnerabilities": []
+    },
+    {
+      "name": "pillow",
+      "version": "11.3.0",
+      "vulnerabilities": [
+        {
+          "id": "PYSEC-2026-2249",
+          "aliases": [
+            "BIT-pillow-2026-25990",
+            "CVE-2026-25990",
+            "GHSA-cfh3-3jmp-rvhc"
+          ],
+          "fix_versions": [
+            "12.1.1"
+          ]
+        },
+        {
+          "id": "PYSEC-2026-2250",
+          "aliases": [
+            "BIT-pillow-2026-40192",
+            "CVE-2026-40192",
+            "GHSA-whj4-6x5x-4v2j"
+          ],
+          "fix_versions": [
+            "12.2.0"
+          ]
+        },
+        {
+          "id": "PYSEC-2026-165",
+          "aliases": [
+            "BIT-pillow-2026-42308",
+            "CVE-2026-42308",
+            "GHSA-wjx4-4jcj-g98j"
+          ],
+          "fix_versions": [
+            "12.2.0"
+          ]
+        },
+        {
+          "id": "PYSEC-2026-2251",
+          "aliases": [
+            "BIT-pillow-2026-42309",
+            "CVE-2026-42309",
+            "GHSA-5xmw-vc9v-4wf2"
+          ],
+          "fix_versions": [
+            "12.2.0"
+          ]
+        },
+        {
+          "id": "PYSEC-2026-2874",
+          "aliases": [
+            "BIT-pillow-2026-42310",
+            "CVE-2026-42310",
+            "GHSA-r73j-pqj5-w3x7"
+          ],
+          "fix_versions": [
+            "12.2.0"
+          ]
+        },
+        {
+          "id": "PYSEC-2026-2252",
+          "aliases": [
+            "BIT-pillow-2026-42311",
+            "CVE-2026-42311",
+            "GHSA-pwv6-vv43-88gr"
+          ],
+          "fix_versions": [
+            "12.2.0"
+          ]
+        },
+        {
+          "id": "PYSEC-2026-2253",
+          "aliases": [
+            "BIT-pillow-2026-54059",
+            "CVE-2026-54059",
+            "GHSA-8v84-f9pq-wr9x"
+          ],
+          "fix_versions": [
+            "12.3.0"
+          ]
+        },
+        {
+          "id": "PYSEC-2026-2255",
+          "aliases": [
+            "BIT-pillow-2026-55379",
+            "CVE-2026-55379",
+            "GHSA-45hq-cxwh-f6vc"
+          ],
+          "fix_versions": [
+            "12.3.0"
+          ]
+        },
+        {
+          "id": "PYSEC-2026-2257",
+          "aliases": [
+            "CVE-2026-55798",
+            "GHSA-4x4j-2g7c-83w6"
+          ],
+          "fix_versions": [
+            "12.3.0"
+          ]
+        },
+        {
+          "id": "PYSEC-2026-2256",
+          "aliases": [
+            "BIT-pillow-2026-55380",
+            "CVE-2026-55380",
+            "GHSA-phj9-mv4w-65pm"
+          ],
+          "fix_versions": [
+            "12.3.0"
+          ]
+        },
+        {
+          "id": "PYSEC-2026-2254",
+          "aliases": [
+            "BIT-pillow-2026-54060",
+            "CVE-2026-54060",
+            "GHSA-5x94-69rx-g8h2"
+          ],
+          "fix_versions": [
+            "12.3.0"
+          ]
+        },
+        {
+          "id": "PYSEC-2026-3453",
+          "aliases": [
+            "BIT-pillow-2026-59205",
+            "CVE-2026-59205",
+            "GHSA-9hw9-ch79-4vh6"
+          ],
+          "fix_versions": [
+            "12.3.0"
+          ]
+        },
+        {
+          "id": "PYSEC-2026-3451",
+          "aliases": [
+            "BIT-pillow-2026-59199",
+            "CVE-2026-59199",
+            "GHSA-6r8x-57c9-28j4"
+          ],
+          "fix_versions": [
+            "12.3.0"
+          ]
+        },
+        {
+          "id": "PYSEC-2026-3493",
+          "aliases": [
+            "BIT-pillow-2026-54058",
+            "CVE-2026-54058",
+            "GHSA-62p4-gmf7-7g93"
+          ],
+          "fix_versions": [
+            "12.3.0"
+          ]
+        },
+        {
+          "id": "PYSEC-2026-3454",
+          "aliases": [
+            "BIT-pillow-2026-59197",
+            "CVE-2026-59197",
+            "GHSA-xj96-63gp-2gmr"
+          ],
+          "fix_versions": [
+            "12.3.0"
+          ]
+        },
+        {
+          "id": "PYSEC-2026-3494",
+          "aliases": [
+            "BIT-pillow-2026-59198",
+            "CVE-2026-59198",
+            "GHSA-fj7v-r99m-22gq"
+          ],
+          "fix_versions": [
+            "12.3.0"
+          ]
+        },
+        {
+          "id": "PYSEC-2026-3495",
+          "aliases": [
+            "BIT-pillow-2026-59200",
+            "CVE-2026-59200",
+            "GHSA-jjj6-mw9f-p565"
+          ],
+          "fix_versions": [
+            "12.3.0"
+          ]
+        },
+        {
+          "id": "PYSEC-2026-3496",
+          "aliases": [
+            "BIT-pillow-2026-59204",
+            "CVE-2026-59204",
+            "GHSA-vjc4-5qp5-m44j"
+          ],
+          "fix_versions": [
+            "12.3.0"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "dpkt",
+      "version": "1.9.8",
+      "vulnerabilities": []
+    },
+    {
+      "name": "pyserial",
+      "version": "3.5",
+      "vulnerabilities": []
+    },
+    {
+      "name": "zeroconf",
+      "version": "0.148.0",
+      "vulnerabilities": [
+        {
+          "id": "PYSEC-2026-3436",
+          "aliases": [
+            "CVE-2026-47180",
+            "GHSA-9pgc-3ccv-5297"
+          ],
+          "fix_versions": [
+            "0.149.5"
+          ]
+        },
+        {
+          "id": "PYSEC-2026-3437",
+          "aliases": [
+            "CVE-2026-47183",
+            "GHSA-phvx-9mgw-67r5"
+          ],
+          "fix_versions": [
+            "0.149.6"
+          ]
+        },
+        {
+          "id": "PYSEC-2026-3439",
+          "aliases": [
+            "CVE-2026-47184",
+            "GHSA-rfg2-pjw2-56x2"
+          ],
+          "fix_versions": [
+            "0.149.7"
+          ]
+        },
+        {
+          "id": "PYSEC-2026-3435",
+          "aliases": [
+            "CVE-2026-48045",
+            "GHSA-9663-mqmp-p9mm"
+          ],
+          "fix_versions": [
+            "0.149.12"
+          ]
+        },
+        {
+          "id": "PYSEC-2026-3438",
+          "aliases": [
+            "CVE-2026-48487",
+            "GHSA-qc2x-6f54-m6h9"
+          ],
+          "fix_versions": [
+            "0.149.16"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "pyinstaller",
+      "version": "6.22.2",
+      "vulnerabilities": []
+    },
+    {
+      "name": "ifaddr",
+      "version": "0.2.0",
+      "vulnerabilities": []
+    },
+    {
+      "name": "pyinstaller-hooks-contrib",
+      "version": "2026.8",
+      "vulnerabilities": []
+    },
+    {
+      "name": "altgraph",
+      "version": "0.17.5",
+      "vulnerabilities": []
+    }
+  ]
+}

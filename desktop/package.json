@@ -1,0 +1,116 @@
+{
+  "name": "openscope",
+  "version": "0.1.0",
+  "private": true,
+  "author": "OpenScope contributors",
+  "description": "OpenScope desktop app for GLS10 and LVS32 sonar",
+  "desktopName": "OpenScope.desktop",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "node --test test/*.test.js",
+    "smoke:backend": "node scripts/smoke-backend.js",
+    "build:backend": "node scripts/build-backend.js mac",
+    "build:mac": "npm run build:backend && electron-builder --mac dmg --arm64 && npm run verify:package",
+    "verify:package": "node scripts/verify-package.js",
+    "build:win": "node scripts/build-backend.js win && electron-builder --win nsis --x64",
+    "build:linux": "node scripts/build-backend.js linux && electron-builder --linux AppImage --x64"
+  },
+  "engines": {
+    "node": ">=22.12"
+  },
+  "devDependencies": {
+    "electron": "44.7.2",
+    "electron-builder": "26.16.1"
+  },
+  "build": {
+    "appId": "com.sonarheadunit.desktop",
+    "productName": "OpenScope",
+    "asar": true,
+    "afterPack": "scripts/after-pack.js",
+    "files": [
+      "src/**/*",
+      "assets/icon-master.png",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "../build/backend/SonarHeadUnit",
+        "to": "backend",
+        "filter": [
+          "**/*"
+        ]
+      },
+      {
+        "from": "../LICENSE",
+        "to": "licenses/OpenScope-LICENSE"
+      },
+      {
+        "from": "../THIRD_PARTY_NOTICES.md",
+        "to": "licenses/THIRD_PARTY_NOTICES.md"
+      },
+      {
+        "from": "node_modules/electron/LICENSE",
+        "to": "licenses/Electron-LICENSE"
+      },
+      {
+        "from": "../docs/LICENSING.md",
+        "to": "licenses/LICENSING.md"
+      },
+      {
+        "from": "../third_party",
+        "to": "licenses/reference"
+      },
+      {
+        "from": "../AUTHORS.md",
+        "to": "licenses/AUTHORS.md"
+      }
+    ],
+    "directories": {
+      "output": "../dist"
+    },
+    "mac": {
+      "category": "public.app-category.utilities",
+      "hardenedRuntime": true,
+      "icon": "assets/icon-master.png",
+      "target": [
+        {
+          "target": "dmg",
+          "arch": [
+            "arm64"
+          ]
+        }
+      ]
+    },
+    "win": {
+      "icon": "assets/icon-master.png",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "requestedExecutionLevel": "requireAdministrator"
+    },
+    "deb": {
+      "artifactName": "${productName}_${version}_${arch}.${ext}"
+    },
+    "linux": {
+      "executableName": "OpenScope",
+      "syncDesktopName": true,
+      "target": [
+        {
+          "target": "AppImage",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "category": "Utility",
+      "icon": "assets/icons"
+    }
+  },
+  "license": "MIT"
+}

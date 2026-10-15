@@ -1,0 +1,32 @@
+[
+  {
+    "path": "notices/pyserial-3.5-LICENSE.txt",
+    "upstream_url": "https://raw.githubusercontent.com/pyserial/pyserial/v3.5/LICENSE.txt",
+    "sha256": "f91cb9813de6a5b142b8f7f2dede630b5134160aedaeaf55f4d6a7e2593ca3f3"
+  },
+  {
+    "path": "licenses/GPL-2.0.txt",
+    "upstream_url": "https://raw.githubusercontent.com/spdx/license-list-data/main/text/GPL-2.0-only.txt",
+    "sha256": "aaf135472f81c5b4a0dca9367e5bb5e9750032b5bebe5442b36e4c0a47430df3"
+  },
+  {
+    "path": "licenses/GPL-3.0.txt",
+    "upstream_url": "https://raw.githubusercontent.com/spdx/license-list-data/main/text/GPL-3.0-only.txt",
+    "sha256": "fb981668c18a279e285fc4d83fba1e836cc84dd4daa73c9697d3cfd2d8aca6e0"
+  },
+  {
+    "path": "licenses/LGPL-2.1.txt",
+    "upstream_url": "https://raw.githubusercontent.com/spdx/license-list-data/main/text/LGPL-2.1-only.txt",
+    "sha256": "5749785c8bdefafcb5d798270ed0a967036fe2ca63dcedade1627565dfef81d2"
+  },
+  {
+    "path": "licenses/LGPL-3.0.txt",
+    "upstream_url": "https://raw.githubusercontent.com/spdx/license-list-data/main/text/LGPL-3.0-only.txt",
+    "sha256": "996af0513df21f7496288951c41428a03c174e9e4a9d63665c57d670f845ccb1"
+  },
+  {
+    "path": "licenses/Apache-2.0.txt",
+    "upstream_url": "https://raw.githubusercontent.com/spdx/license-list-data/main/text/Apache-2.0.txt",
+    "sha256": "074e6e32c86a4c0ef8b3ed25b721ca23aca83df277cd88106ef7177c354615ff"
+  }
+]

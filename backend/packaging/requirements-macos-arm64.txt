@@ -1,0 +1,2 @@
+# Compatibility entry point for the Apple Silicon build.
+-r requirements-build.txt

@@ -1,0 +1,59 @@
+{
+  "date": "2026-10-14",
+  "tool": "pip-audit 2.10.1",
+  "requirement": "backend/packaging/requirements-build.txt",
+  "raw_finding_count": 0,
+  "note": "Duplicate IDs merged; descriptions omitted. Runtime plus resolved build dependencies on Linux Python 3.12.",
+  "dependencies": [
+    {
+      "name": "numpy",
+      "version": "2.0.2",
+      "vulnerabilities": []
+    },
+    {
+      "name": "opencv-python",
+      "version": "5.0.0.93",
+      "vulnerabilities": []
+    },
+    {
+      "name": "pillow",
+      "version": "12.3.0",
+      "vulnerabilities": []
+    },
+    {
+      "name": "dpkt",
+      "version": "1.9.8",
+      "vulnerabilities": []
+    },
+    {
+      "name": "pyserial",
+      "version": "3.5",
+      "vulnerabilities": []
+    },
+    {
+      "name": "zeroconf",
+      "version": "0.149.17",
+      "vulnerabilities": []
+    },
+    {
+      "name": "pyinstaller",
+      "version": "6.22.2",
+      "vulnerabilities": []
+    },
+    {
+      "name": "ifaddr",
+      "version": "0.2.0",
+      "vulnerabilities": []
+    },
+    {
+      "name": "pyinstaller-hooks-contrib",
+      "version": "2026.8",
+      "vulnerabilities": []
+    },
+    {
+      "name": "altgraph",
+      "version": "0.17.5",
+      "vulnerabilities": []
+    }
+  ]
+}

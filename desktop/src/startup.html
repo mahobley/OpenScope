@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'none'; script-src 'self'; style-src 'self'">
+  <title>Starting OpenScope</title>
+  <link rel="stylesheet" href="startup.css">
+</head>
+<body>
+  <main>
+    <div class="mark" aria-hidden="true"></div>
+    <p class="eyebrow">OpenScope</p>
+    <h1 id="title">Starting OpenScope…</h1>
+    <p id="detail">Preparing the secure local connection. Administrator permission is needed to capture sonar packets and configure the dedicated Ethernet adapter. Connect the GLS10 directly to that adapter.</p>
+    <p id="log-path" hidden></p>
+    <button id="cancel-startup" type="button">Cancel startup</button>
+    <div id="actions" hidden>
+      <button id="show-log" type="button">Show diagnostic log</button>
+      <button id="retry" type="button">Retry</button>
+      <button id="export-diagnostics" type="button">Export diagnostics</button>
+    </div>
+  </main>
+  <script src="startup.js"></script>
+</body>
+</html>

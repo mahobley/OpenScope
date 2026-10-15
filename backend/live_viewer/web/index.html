@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OpenScope · Sonar viewer</title>
+  <link rel="stylesheet" href="/app.css">
+</head>
+<body>
+  <main>
+    <div id="recording-failure" role="alert" hidden>
+      <strong>Recording problem</strong>
+      <span id="recording-failure-message"></span>
+      <button id="acknowledge-recording-failure" type="button">Dismiss</button>
+    </div>
+    <header>
+      <div><span class="eyebrow">GLS10 &amp; LVS32 Transducer</span><h1>OpenScope</h1></div>
+      <div class="header-actions">
+        <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to light mode">Light mode</button>
+        <div id="connection" class="pill"><span class="pulse-dot" aria-hidden="true"></span>Waiting for stream</div>
+      </div>
+    </header>
+    <section class="screens">
+      <article id="sonar-panel">
+        <div class="screen-heading">
+          <div class="screen-title">Live sonar</div>
+          <div class="screen-actions">
+          <button id="live-range-crop" class="fullscreen-button"
+                  aria-label="Crop live view at selected range">Crop at range</button>
+          </div>
+        </div>
+        <div class="viewer-frame">
+        <div class="disabled-banner sonar-disabled-banner" hidden>Sonar disabled · Last received frame</div>
+        <div class="viewer">
+        <img id="sonar" alt="Live sonar stream">
+        <div id="empty" class="stream-empty" role="status">
+          <span class="empty-label">Sonar input</span>
+          <strong>No incoming sonar signal</strong>
+          <p id="empty-detail">Waiting for the first decoded sonar frame.</p>
+          <div id="empty-enable-callout" class="empty-enable-callout">
+            <span>First time starting the system?</span>
+            <button data-action="toggle_sonar" id="empty-enable" class="accent" type="button">Enable sonar</button>
+          </div>
+          <small id="empty-guidance">Press Enable sonar to start the stream, then check the sonar power, Ethernet connection, network adapter, and stream setting if no image appears.</small>
+        </div>
+        <button data-action="save_frame" class="frame-save" id="save-sonar-frame">Save frame</button>
+        </div>
+        <div class="disabled-banner sonar-disabled-banner" hidden>Sonar disabled · Last received frame</div>
+        </div>
+      </article>
+      <article id="echogram-panel">
+        <div class="screen-heading">
+          <div class="screen-title">Echogram</div>
+          <div class="screen-actions">
+            <button id="echogram-range-crop" class="fullscreen-button"
+                    aria-label="Crop echogram at range boundary">Crop at range</button>
+          </div>
+        </div>
+        <div class="viewer-frame">
+        <div class="disabled-banner sonar-disabled-banner" hidden>Sonar disabled · Last received frame</div>
+        <div class="viewer">
+        <img id="echogram" alt="Scrolling echogram">
+        <div id="echogram-empty">Building echogram history…</div>
+        <button data-action="save_echogram_frame" class="frame-save" id="save-echogram-frame">save ecchogram</button>
+        </div>
+        <div class="disabled-banner sonar-disabled-banner" hidden>Sonar disabled · Last received frame</div>
+        </div>
+      </article>
+    </section>
+    <section class="telemetry">
+      <div><span>Sonar</span><strong id="sonar-state">—</strong></div>
+      <div><span>Frame</span><strong id="frame">—</strong></div>
+      <div><span>Capture / render FPS</span><strong id="fps">—</strong></div>
+      <div><span>Range</span><strong id="range">—</strong></div>
+      <div class="angle-telemetry">
+        <span>Tilt</span><strong id="tilt">Waiting…</strong>
+        <div><button data-action="zero_tilt" id="zero-tilt">Zero</button>
+          <button data-action="reverse_tilt" id="reverse-tilt">Reverse</button>
+          <button data-action="reset_tilt" id="reset-tilt">Reset</button></div>
+      </div>
+      <div class="angle-telemetry">
+        <span>Roll</span><strong id="roll">Waiting…</strong>
+        <div><button data-action="zero_roll" id="zero-roll">Zero</button>
+          <button data-action="reverse_roll" id="reverse-roll">Reverse</button>
+          <button data-action="reset_roll" id="reset-roll">Reset</button></div>
+      </div>
+    </section>
+    <section class="controls">
+      <div class="control-group display-controls">
+        <span class="group-title">Display</span>
+        <button data-action="toggle_display" id="display-toggle" aria-pressed="false"
+                title="Pause rendering and echogram generation; polar recording continues">Hide display</button>
+        <label id="color-scheme-control" class="color-scheme-control">
+          <select id="color-scheme" aria-label="Sonar colour scheme">
+            <option value="orange">Orange</option>
+            <option value="light-gray">Light gray</option>
+            <option value="dark-gray">Dark gray</option>
+            <option value="ocean-blue">Ocean blue</option>
+            <option value="rainbow">Rainbow</option>
+          </select>
+        </label>
+        <button data-action="toggle_view" id="view-toggle">View polar</button>
+        <button data-action="toggle_distance_grid" id="distance-grid">Hide distance grid</button>
+        <button data-action="toggle_motion" id="motion-toggle">Motion view</button>
+        <button id="echogram-toggle" aria-label="Hide echogram">Hide echogram</button>
+      </div>
+      <div class="control-pair">
+      <div class="control-group sonar-controls">
+        <span class="group-title">Control</span>
+      <button data-action="toggle_sonar" id="sonar-toggle" class="accent">Disable sonar</button>
+      <div class="range-control">
+        <button data-action="zoom_in" aria-label="Decrease range">−</button>
+        <label for="range-select">Range</label>
+        <select id="range-select">
+          <option value="" selected disabled>—</option>
+          <option value="min">Minimum</option>
+          <option>7</option><option>9</option><option>10</option><option>15</option>
+          <option>20</option><option>25</option><option>30</option><option>35</option>
+          <option>40</option><option>45</option><option>50</option><option>55</option>
+          <option>60</option><option>65</option><option>70</option><option>75</option>
+          <option>80</option><option>90</option><option>100</option><option>110</option>
+          <option>120</option><option>135</option><option>150</option><option>175</option>
+          <option>200</option>
+        </select>
+        <button data-action="zoom_out" aria-label="Increase range">+</button>
+      </div>
+      </div>
+      <div class="control-group visualization-controls">
+        <span class="group-title">Visualization</span>
+      <div class="gain-control">
+        <span>Sonar gain <output id="gain-value" for="gain-select">21%</output></span>
+        <button id="gain-down" aria-label="Decrease sonar gain">−</button>
+        <input id="gain-select" type="range" min="0" max="100" value="21" aria-label="Sonar gain">
+        <button id="gain-up" aria-label="Increase sonar gain">+</button>
+        <button id="gain-reset">Reset</button>
+      </div>
+      <div class="gain-control echogram-gain-control">
+        <span>Echogram gain <output id="echogram-gain-value" for="echogram-gain">100%</output></span>
+        <button id="echogram-gain-down" aria-label="Decrease echogram gain">−</button>
+        <input id="echogram-gain" type="range" min="0" max="300" value="100" aria-label="Echogram gain">
+        <button id="echogram-gain-up" aria-label="Increase echogram gain">+</button>
+        <button id="echogram-gain-reset">Reset</button>
+      </div>
+      <div class="histogram-control">
+        <div class="histogram-heading">
+          <span>Raw intensity</span>
+          <strong id="histogram-summary">Waiting for sonar…</strong>
+        </div>
+        <canvas id="intensity-histogram" width="512" height="150"
+                aria-label="Live raw sonar intensity histogram"></canvas>
+        <div class="histogram-axis"><span>1 · Weak</span><span>255 · Strong</span></div>
+        <div class="intensity-window">
+          <div class="intensity-window-values">
+            <span>Black point <strong id="intensity-min-value">0</strong></span>
+            <span>White point <strong id="intensity-max-value">255</strong></span>
+          </div>
+          <div class="dual-range">
+            <input id="intensity-min" type="range" min="0" max="255" value="0"
+                   aria-label="Minimum displayed sonar intensity">
+            <input id="intensity-max" type="range" min="0" max="255" value="255"
+                   aria-label="Maximum displayed sonar intensity">
+          </div>
+        </div>
+      </div>
+      </div>
+      </div>
+      <section class="outputs-panel">
+        <div class="outputs-heading">
+          <span><span class="group-title">Recording &amp; outputs</span><strong>Capture and storage</strong></span>
+          <span class="summary-hint">Choose destinations, apply changes, then record</span>
+        </div>
+        <div class="output-paths">
+          <div class="section-heading">
+            <span><b>1</b><strong>Output paths</strong></span>
+            <span id="paths-state" class="settings-state">Loading paths…</span>
+          </div>
+          <div class="path-grid">
+            <label>Sonar video file
+              <span class="path-picker">
+                <input id="recording-path" aria-label="Sonar video output path">
+                <button type="button" data-folder-target="recording-path" data-preserve-filename>Choose folder…</button>
+              </span>
+            </label>
+            <label>Echogram PNG base file
+              <span class="path-picker">
+                <input id="echogram-recording-path" aria-label="Echogram PNG output path">
+                <button type="button" data-folder-target="echogram-recording-path" data-preserve-filename>Choose folder…</button>
+              </span>
+            </label>
+            <label>PNGs, metadata &amp; snapshots folder
+              <span class="path-picker">
+                <input id="snapshot-path" aria-label="Saved frames output folder">
+                <button type="button" data-folder-target="snapshot-path">Choose folder…</button>
+              </span>
+            </label>
+          </div>
+          <div class="path-actions">
+            <button id="choose-recording-folder" type="button">Choose folder for all recordings…</button>
+            <small id="paths-guidance">Changes must be applied before recording.</small>
+            <button id="apply-paths" disabled>Paths applied</button>
+          </div>
+          <div class="path-actions">
+            <button type="button" data-open-folder="recording">Open video folder</button>
+            <button type="button" data-open-folder="echogram">Open echogram folder</button>
+            <button type="button" data-open-folder="snapshots">Open snapshots folder</button>
+          </div>
+        </div>
+
+        <div class="recording-section">
+          <div class="section-heading">
+            <span><b>2</b><strong>Recording</strong></span>
+            <span class="settings-state">Choose manual or autosave</span>
+          </div>
+          <div class="recording-options">
+            <div class="manual-recording">
+              <div class="option-heading">
+                <strong>Record now</strong>
+                <small>Choose sonar outputs below. Echogram capture saves numbered PNG segments.</small>
+              </div>
+              <label>Sonar recording format
+                <select id="recording-format" aria-label="Sonar recording format" disabled>
+                  <option value="both">Video + PNGs with metadata</option>
+                  <option value="video">Video only</option>
+                  <option value="png">PNGs with metadata only</option>
+                </select>
+              </label>
+              <small class="recording-format-guidance">Applies to manual sonar recording and autosave. Stop sonar recording before changing formats.</small>
+              <div class="record-buttons">
+                <div>
+                  <button data-action="toggle_recording" id="recording">Record sonar</button>
+                  <div class="recording-timer" id="recording-timer" hidden>00:00.00</div>
+                </div>
+                <div>
+                  <button data-action="toggle_echogram_recording" id="echogram-recording">Start echogram capture</button>
+                  <div class="recording-timer" id="echogram-recording-timer" hidden>00:00.00</div>
+                </div>
+              </div>
+            </div>
+            <div class="autosave-control">
+              <div class="option-heading">
+                <strong>Autosave segments</strong>
+                <small>Sonar uses the selected format. Echogram saves numbered PNGs and splits early when a size limit is reached.</small>
+              </div>
+              <div class="autosave-fields">
+                <label><input type="checkbox" id="autosave-raw"> Sonar recording</label>
+                <label><input type="checkbox" id="autosave-echogram"> Echogram PNG</label>
+                <label>Segment length (minutes)
+                  <input type="number" id="autosave-minutes" min="0.1" max="1440" step="0.1" value="10">
+                </label>
+              </div>
+              <div class="autosave-actions">
+                <button id="apply-autosave" disabled>Start autosave</button>
+                <button id="stop-autosave" disabled>Stop autosave</button>
+              </div>
+              <small id="autosave-guidance">Select sonar, echogram, or both.</small>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div class="session-footer">
+        <div id="notice" role="status"></div>
+        <span id="disk-space"></span>
+        <span>Stopping the session ends the stream and all active recordings.</span>
+        <button id="stop-emulator" class="danger stop-control">Stop session</button>
+      </div>
+    </section>
+  </main>
+  <script src="/app.js"></script>
+</body>
+</html>

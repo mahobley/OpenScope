@@ -1,0 +1,56 @@
+__pycache__/
+xy_out/
+*.pyc
+.env
+.venv/
+venv/
+.DS_Store
+.ipynb_checkpoints/
+*.mp4
+garmin_out/
+*.jpg
+*.png
+!desktop/assets/icons/*.png
+*.pcapng
+.vscode/
+frames_2026*/
+livescope_2026*.mp4
+*.log
+browser_test*/
+research/protocol_test_results/
+research/Documents/EMULATOR_COMMUNICATION_PROTOCOL.aux
+research/Documents/EMULATOR_COMMUNICATION_PROTOCOL.out
+research/Documents/EMULATOR_COMMUNICATION_PROTOCOL.pdf
+research/Documents/EMULATOR_COMMUNICATION_PROTOCOL.synctex.gz
+
+# Local LaTeX build products for root-level engineering notes
+EMULATOR_IMPLEMENTATION_GUIDE*.aux
+EMULATOR_IMPLEMENTATION_GUIDE*.out
+EMULATOR_IMPLEMENTATION_GUIDE*.pdf
+EMULATOR_IMPLEMENTATION_GUIDE*.synctex.gz
+EMULATOR_IMPLEMENTATION_GUIDE_prejpg.tex
+
+# Generated backend intermediates and desktop distributables
+/build/
+/dist/
+/dist_mac/
+/dist_windows/
+/release_mac/
+/release_windows/
+/release_linux/
+
+# Electron dependencies
+desktop/node_modules/
+
+# Release docs assets and transient output
+!docs/demo.png
+.pytest_cache/
+*.aux
+*.out
+*.synctex.gz
+*.fdb_latexmk
+*.fls
+
+# Local installers and personal controller settings
+/*.dmg
+/backend/controller-settings.json

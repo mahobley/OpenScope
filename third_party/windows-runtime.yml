@@ -1,0 +1,13 @@
+# Windows runtime isolated under build/. Retain the package cache and receipts.
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12.15
+  - py-opencv=5.0.0
+  - numpy=2.0.2
+  - pillow=12.3.0
+  - ffmpeg=9.0.2=lgpl*
+  - libpng>=1.6.59
+  - libtiff>=4.7.2
+  - openssl>=3.6.5
+  - ruamel.yaml

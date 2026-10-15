@@ -1,0 +1,23 @@
+name: Beta release checks
+on: [push, pull_request, workflow_dispatch]
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: sudo apt-get update && sudo apt-get install -y libpcap0.8
+      - run: python -m pip install -r backend/requirements.txt pytest
+      - run: python -m pytest -q
+        working-directory: backend
+      - run: npm ci
+        working-directory: desktop
+      - run: npm test
+        working-directory: desktop
+      - run: npm run smoke:backend
+        working-directory: desktop
