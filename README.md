@@ -47,6 +47,7 @@ minimum OS versions, and broader hardware/firmware compatibility remain unqualif
 
 ## Documentation
 
+- [Whitepaper: OpenScope: Open-source GLS10 Interoperability](docs/OpenScope-white-paper.pdf).
 - [Install and connect your sonar](docs/QUICK_START.md).
 - [Run from a terminal](docs/RUN_FROM_SOURCE.md).
 - [Build desktop apps](docs/BUILD.md).
@@ -77,3 +78,19 @@ This is a joint release by Mourad Derbedrosian and MAHobley; see [author credits
 OpenScope is not affiliated with or endorsed by Garmin. GLS10 and LVS32 are
 product names used to describe interoperability. This is beta software;
 verify controls and recordings on your own setup.
+
+## Citation
+
+If you use OpenScope in your work, please cite our
+[whitepaper](docs/OpenScope-white-paper.pdf) as follows:
+
+```bibtex
+@misc{hobley2026openscope,
+  author       = {Hobley, Michael A. and Derbedrosian, Mourad},
+  title        = {{OpenScope}: Open-source {GLS10} Interoperability},
+  year         = {2026},
+  month        = oct,
+  howpublished = {White paper},
+  url          = {https://github.com/mahobley/OpenScope/blob/main/docs/OpenScope-white-paper.pdf}
+}
+```
