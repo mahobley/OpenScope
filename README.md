@@ -6,7 +6,7 @@ and record video and frames with metadata.
 
 [Download 0.1.0 beta](https://github.com/mahobley/OpenScope/releases/tag/v0.1.0) ·
 [Quick start](docs/QUICK_START.md) · [Known issues](docs/KNOWN_ISSUES.md) ·
-[Release notes](CHANGELOG.md)
+[Release notes](CHANGELOG.md) · [White paper](docs/OpenScope-white-paper.pdf)
 
 ![OpenScope live sonar and echogram](docs/demo.png)
 
@@ -82,7 +82,7 @@ verify controls and recordings on your own setup.
 ## Citation
 
 If you use OpenScope in your work, please cite our
-[whitepaper](docs/OpenScope-white-paper.pdf) as follows:
+[white paper](docs/OpenScope-white-paper.pdf) as follows:
 
 ```bibtex
 @misc{hobley2026openscope,
